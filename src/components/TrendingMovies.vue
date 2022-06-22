@@ -7,7 +7,7 @@ import Movies from './Movies.vue'
 
 const movies = ref([])
 
-const fetchMovies = onMounted(()=>{
+    onMounted(()=>{
     const getAllMovies = async() => {
         
             const {data} = await axios.get(urls.getTrending)

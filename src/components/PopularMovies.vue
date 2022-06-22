@@ -9,7 +9,7 @@ const movies = ref([])
 const allMovies = ref([])
 
 
-const fetchMovies = onMounted(()=>{
+onMounted(()=>{
     const getAllmovies = async () =>{
         const {data} = await axios.get(urls.getPopular)
         movies.value = data.results.slice(0,13)

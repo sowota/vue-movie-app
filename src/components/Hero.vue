@@ -12,7 +12,7 @@ const router = useRouter()
 
 const url = imgUrls.originalUrl
 
-const fetchMovies = onMounted(()=>{
+onMounted(()=>{
   const getTrendMovies = async ()=>{
     const response = await axios.get(urls.getTrending)
     trendMovies.value = response.data.results.slice(0,5)
@@ -43,7 +43,6 @@ const goToDetails = (id) =>{
 }
 
 
-
 // const createUrl = watch(trendMovies, newValue =>{
 //   newValue.map(movie =>{
 //       return imgUrls.originalUrl + movie?.poster_path
@@ -59,8 +58,6 @@ const goToDetails = (id) =>{
 //   }
 // }
 
-
-
 </script>
 
 <template>
@@ -68,7 +65,8 @@ const goToDetails = (id) =>{
       <Slide v-for="movie in trendMovies" :key="movie">
         <div class="imgContainer">
           <img 
-          :src="`${url}${movie.backdrop_path}`" alt='movie poster'
+          :src="`${url}${movie.backdrop_path}`" 
+          alt='movie poster'
           loading="lazy"
           />
         </div>
