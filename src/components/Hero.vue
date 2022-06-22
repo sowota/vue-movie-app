@@ -13,10 +13,11 @@ const router = useRouter()
 const url = imgUrls.originalUrl
 
 onMounted(()=>{
+  console.log('mounted')
   const getTrendMovies = async ()=>{
-    const response = await axios.get(urls.getTrending)
-    trendMovies.value = response.data.results.slice(0,5)
-    //console.log(trendMovies.value)
+    const {data} = await axios.get(urls.getTrending)
+    trendMovies.value = data?.results?.slice(0,1)
+    console.log(trendMovies.value)
 
   }
 
@@ -58,25 +59,28 @@ const goToDetails = (id) =>{
 //   }
 // }
 
+
+
+
 </script>
 
 <template>
-  <Carousel :items-to-show="1" autoplay="8000" transition="1000">
-      <Slide v-for="movie in trendMovies" :key="movie">
-        <div class="imgContainer">
-          <img 
-          :src="`${url}${movie.backdrop_path}`" 
-          alt='movie poster'
-          loading="lazy"
-          />
+  
+        <div class="hero__wrapper" v-for="movie in trendMovies" :key="movie.id">
+          <div class="imgContainer" >
+            <img
+              :src="`${url}${movie?.backdrop_path}`"
+              alt='movie poster'
+              loading="lazy"
+            />
+          </div>
+          <div class="slider__content">
+            <h1 class="slider__title">{{movie?.original_title}}</h1>
+            <p class="slider__overview">{{movie?.overview}}</p>
+            <button class="action" @click="goToDetails(movie?.id)">View More</button>
+          </div>
         </div>
-        <div class="slider__content">
-          <h1 class="slider__title">{{movie.original_title}}</h1>
-          <p class="slider__overview">{{movie.overview}}</p>
-          <button class="action" @click="goToDetails(movie.id)">View More</button>
-        </div>
-      </Slide>
-  </Carousel>
+
   
 </template>
 
@@ -90,10 +94,14 @@ $accent:#E59D23;
 $accentHover:#b37b1c;
 $whiteish:rgb(221, 220, 220);
 
+.hero__wrapper{
+  position: relative;
+}
+
 .imgContainer {
   width: 100vw;
   height: 60vh;
-  position: relative;
+  
 
   @media(min-width:1024px){
     height: 100vh;
@@ -124,6 +132,7 @@ $whiteish:rgb(221, 220, 220);
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  z-index: 50;
 
   h1{
     color:white;

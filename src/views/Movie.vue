@@ -55,18 +55,18 @@ const fetchSimilar = watchEffect(()=>{
     <main>
         <div class="movie__wrap">
             <div class="movie__img">
-                <img :src="`${imgUrl}${movieDetails.backdrop_path}`"/>
+                <img :src="`${imgUrl}${movieDetails?.backdrop_path}`"/>
             </div>
             <div class="movie__body">
                 <div class="movie__left">
-                    <h1>{{movieDetails.original_title}}</h1>
-                    <p>Released: {{movieDetails.release_date}}</p>
+                    <h1>{{movieDetails?.original_title}}</h1>
+                    <p>Released: {{movieDetails?.release_date}}</p>
                     <div class="movie__rating">
                         <font-awesome-icon icon="star" class="movie__starIcon" />
-                        <p>{{movieDetails.vote_average}}</p>
+                        <p>{{movieDetails?.vote_average}}</p>
                     </div>
                     <div  class="movie__genres">
-                            <span v-for="genre in movieDetails.genres" :key="genre" class="movie__genre">{{genre.name}}</span>
+                            <span v-for="genre in movieDetails.genres" :key="genre" class="movie__genre">{{genre?.name}}</span>
                     </div>
                 </div>
 
@@ -75,7 +75,7 @@ const fetchSimilar = watchEffect(()=>{
                     width="100%"
                     height="100%"></iframe>
                 
-                    <p class="movie__description">{{movieDetails.overview}}</p>
+                    <p class="movie__description">{{movieDetails?.overview}}</p>
                     
                 </div>
             </div>

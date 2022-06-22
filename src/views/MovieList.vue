@@ -5,15 +5,15 @@
        <section class="movie__wrap">
             <div v-for="movie in allMovies" :key="movie" class="movie__body" @click="goToSingle(movie.id)">
                 <div class="movie__img">
-                    <img :src="`${url}${movie.poster_path}`"/>
+                    <img :src="`${url}${movie?.poster_path}`"/>
                 </div>
                 <div class="movie__details">
-                    <h4>{{movie.original_title || movie.original_name}}</h4>
+                    <h4>{{movie?.original_title || movie?.original_name}}</h4>
                     <div class="movie__content">
-                        <p>{{movie.release_date}}</p>
+                        <p>{{movie?.release_date}}</p>
                         <p class="movie__rating">
                             <font-awesome-icon icon="star" class="movie__startIcon" />
-                            {{movie.vote_average}}
+                            {{movie?.vote_average}}
                         </p>
                     </div>
                 </div>

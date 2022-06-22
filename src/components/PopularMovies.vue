@@ -12,7 +12,7 @@ const allMovies = ref([])
 onMounted(()=>{
     const getAllmovies = async () =>{
         const {data} = await axios.get(urls.getPopular)
-        movies.value = data.results.slice(0,13)
+        movies.value = data?.results
        // console.log(movies.value)
     }
 

@@ -60,21 +60,21 @@ const getSinglePage = (id) =>{
             <div 
                 v-for="movie in movies" 
                 :key="movie" 
-                @click="getSinglePage(movie.id)"
+                @click="getSinglePage(movie?.id)"
                 class="movie__body"
             >
                 <div class="movie__img">
                     <img 
-                        :src="`${url}${movie.poster_path}`"
+                        :src="`${url}${movie?.poster_path}`"
                         loading="lazy"
                     />
                 </div>
-                <h4 class="movie__title">{{movie.title}}</h4>
+                <h4 class="movie__title">{{movie?.title}}</h4>
                 <div class="movie__content">
-                    <p>{{movie.release_date}}</p>
+                    <p>{{movie?.release_date}}</p>
                     <p class="movie__rating">
                         <font-awesome-icon icon="star" class="movie__startIcon" />
-                        {{movie.vote_average}}
+                        {{movie?.vote_average}}
                     </p>
                 </div>
             </div>
