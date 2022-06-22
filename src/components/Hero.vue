@@ -13,11 +13,11 @@ const router = useRouter()
 const url = imgUrls.originalUrl
 
 onMounted(()=>{
-  console.log('mounted')
+  //console.log('mounted')
   const getTrendMovies = async ()=>{
     const {data} = await axios.get(urls.getTrending)
     trendMovies.value = data?.results?.slice(0,1)
-    console.log(trendMovies.value)
+   // console.log(trendMovies.value)
 
   }
 

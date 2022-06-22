@@ -37,9 +37,9 @@ import Footer from '../components/Footer.vue'
 
 const route = useRoute()
 const router = useRouter()
-console.log(router)
+//console.log(router)
 const input = route.params.query
-console.log(input)
+//console.log(input)
 const searchResults = ref([])
 const url = imgUrls.originalUrl
 const pageNum = ref(1)
@@ -48,7 +48,7 @@ const pageNum = ref(1)
 watchEffect(async()=>{
   const {data} = await axios.get(handleSearch(input, pageNum.value))
     searchResults.value = data.results.filter(movie => movie.poster_path)
-    console.log(searchResults.value)
+    //console.log(searchResults.value)
     
 })
 

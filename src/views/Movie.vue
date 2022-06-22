@@ -11,7 +11,7 @@ import Smilar from '../components/Smilar.vue';
 import Footer from '../components/Footer.vue';
 
 const route = useRoute()
-console.log(route.params)
+//console.log(route.params)
 const id = route.params.name
 
 const movieDetails = ref(null)

@@ -36,7 +36,7 @@ const url = imgUrls.originalUrl
 const route = useRoute()
 const router = useRouter()
 const allMovies = ref([])
-console.log(route.path)
+//console.log(route.path)
 
 const pageNum = ref(2)
 const pageNum2 = ref(2)
@@ -44,7 +44,7 @@ const pageNum2 = ref(2)
 const params = route.params.category
 
 watchEffect(async ()=>{
-    console.log('watching...')
+    //console.log('watching...')
     if(params === 'Popular'){
         const {data} = await axios.get(urls.getPopular)
         allMovies.value = data.results
@@ -72,7 +72,7 @@ const loadMoreMovies =async() =>{
     // console.log(pageNum.value)
     if(params === 'Popular'){
         const {data} = await axios.get(getPopular(pageNum.value))
-        console.log(data)
+        //console.log(data)
          allMovies.value.push(...data.results)
          pageNum.value += 1
          //console.log(allMovies.value)
@@ -88,7 +88,7 @@ const loadMoreMovies =async() =>{
 const handleScroll = (e) => {
     //console.log(e.target.documentElement.scrollHeight)
     if( window.innerHeight + e.target.documentElement.scrollTop + 1 >= e.target.documentElement.scrollHeight){
-        console.log('reached')
+        //console.log('reached')
         loadMoreMovies()
     }
 
